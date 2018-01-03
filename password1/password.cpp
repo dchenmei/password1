@@ -32,19 +32,10 @@ Password::Password(int l, int a): length(l)
 	}
 }
 
-/* Also known as psychopath method */
-void Password::random(int l)
+/* A random seed will draw a number from [0, 74], then an algorithm figures out which char to get */
+/* random helper function */
+char Password::rand_char()
 {
-	/* Char set used (ASCII):
-	 * 0 - 9 (48 - 57) 10      0 - 9
-	 * a - z (97 - 122) 26     10 - 35
-	 * A - Z (65 - 90) 26      36 - 61
-	 * Assorted symbols (in an array)
-	 * 33 (!), 35 (#), 36 ($), 37 (%), 38 (&), 63(?), 64(@) 7 62 - 68
-	 */
-
-	/* A random seed will draw a number from [0, 74], then an algorithm figures out which char to get */
-
 	/* Random number [0, 74] */
 	srand(time(NULL));
 	int place = rand() % 75;
@@ -90,7 +81,28 @@ void Password::random(int l)
 		c = (char) place + '0';
 	}
 
-	cout << c << endl;
+	return c;
+}
+
+/* Also known as psychopath method */
+void Password::random(int l)
+{
+	/* Char set used (ASCII):
+	 * 0 - 9 (48 - 57) 10      0 - 9
+	 * a - z (97 - 122) 26     10 - 35
+	 * A - Z (65 - 90) 26      36 - 61
+	 * Assorted symbols (in an array)
+	 * 33 (!), 35 (#), 36 ($), 37 (%), 38 (&), 63(?), 64(@) 7 62 - 68
+	 */
+
+	string p;
+	while (l--)
+	{
+		sleep(.5);
+		p.push_back(rand_char());
+	}
+	
+	cout << p << endl;
 }
 
 void Password::schneier(int l)
@@ -107,7 +119,7 @@ void Password::pao(int l)
 
 int main()
 {
-	Password *p = new Password(0, 0);
+	Password *p = new Password(8, 0);
 
 	return 0;
 }
