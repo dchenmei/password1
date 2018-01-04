@@ -12,6 +12,7 @@
 #include <unistd.h> /* sleep */
 #include <sstream> /* istringstream */
 #include <vector> /* vector */
+#include <algorithm> /* random_shuffle */
 
 using std::cout;
 using std::cin;
@@ -20,6 +21,7 @@ using std::string;
 using std::getline;
 using std::istringstream;
 using std::vector;
+using std::random_shuffle;
 
 class Password
 {
@@ -37,6 +39,7 @@ class Password
 
 	string get_sentence();
 	vector<string> process_sentence(string s);
+	vector<string> read_seeds();
 
 	/* member variables */
     string password;
