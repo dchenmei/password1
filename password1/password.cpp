@@ -98,15 +98,61 @@ void Password::random(int l)
 	string p;
 	while (l--)
 	{
-		sleep(.5);
+		sleep(1);
 		p.push_back(rand_char());
 	}
 	
-	cout << p << endl;
+	password = p;
+}
+
+string Password::get_sentence()
+{
+	string s;
+	getline(cin, s);
+	cout << s << endl;
+	
+	return s;
+}
+
+/* Pushes each word and symbol of a setence into a vector */
+vector<string> Password::process_sentence(string s)
+{
+	/* Also ignore period if there is any */
+    /* to distinguish words, we use whitespaces as delimiter */
+
+	istringstream is(s);
+	vector<string> words;
+	string word;
+
+	while (is >> word) 
+	{
+		words.push_back(word);
+	}
+
+	return words;
 }
 
 void Password::schneier(int l)
 {
+	vector<string> pieces = process_sentence(get_sentence());
+	
+	/* one or two words where the full word is used */
+	srand(time(NULL));
+	int full_words = (rand() % 2) + 1;
+	srand(time(NULL) * 10);
+	int index_1, index_2;
+	index_1 = rand() % pieces.size();
+	srand(time(NULL));
+
+	index_2 = full_words == 2 ? rand() % pieces.size() : -1;
+
+	for (int i = 0; i < pieces.size(); ++i)
+	{
+		if (i == index_1 || i == index_2)
+			password += pieces[i];
+		else
+			password += pieces[i][0];
+	}
 }
 
 void Password::electrum(int l)
@@ -119,7 +165,9 @@ void Password::pao(int l)
 
 int main()
 {
-	Password *p = new Password(8, 0);
+	Password *p = new Password(8, 1);
+
 
 	return 0;
 }
+
