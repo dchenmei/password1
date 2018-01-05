@@ -41,6 +41,8 @@ class Password
 	vector<string> process_sentence(string s);
 	vector<string> read_seeds();
 
+	string get_word();
+
 	/* member variables */
     string password;
 	int length;
