@@ -78,9 +78,3 @@ Random::Random(int l)
 	/* why super class constructor no work? */
 	set_password(p);
 }
-
-int main()
-{
-	Random *r = new Random(8);
-	cout << r->get_password() << endl;
-}

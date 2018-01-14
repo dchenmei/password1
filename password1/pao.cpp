@@ -52,8 +52,3 @@ string PAO::get_word()
     getline(cin, s);
     return s;
 }
-
-int main()
-{
-	return 0;
-}

@@ -42,8 +42,3 @@ vector<string> Electrum::read_seeds()
     return words;
 }
 
-
-int main()
-{
-	return 0;
-}

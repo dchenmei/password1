@@ -51,9 +51,3 @@ vector<string> Schneier::process_sentence(string s)
 
     return words;
 }
-
-int main()
-{
-
-	return 0;
-}
