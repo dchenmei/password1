@@ -5,6 +5,9 @@
  * Author: swolewizard
  *******************************************/
 
+#ifndef PASSWORD_HPP
+#define PASSWORD_HPP
+
 #include <iostream>
 #include <string>
 #include <cstdlib> /* srand() */
@@ -26,24 +29,14 @@ using std::random_shuffle;
 class Password
 {
   public:
-	Password(int l, int a);
+	Password();
+    Password(string s);
+	void set_password(string s);
+	string get_password();
 
   private:
-    
-	/* Random password algorithm */
-	char rand_char();
-	void random(int l); // 0
-	void schneier(int l); // 1
-	void electrum(int l); // 2 
-	void pao(int l); // 3
-
-	string get_sentence();
-	vector<string> process_sentence(string s);
-	vector<string> read_seeds();
-
-	string get_word();
-
-	/* member variables */
     string password;
 	int length;
 };
+
+#endif
