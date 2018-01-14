@@ -1,3 +1,5 @@
+#ifndef ELECTRUM_HPP
+#define ELECTRUM_HPP
 #include "password.hpp"
 
 class Electrum: public Password
@@ -8,3 +10,5 @@ class Electrum: public Password
   private:
 	vector<string> read_seeds();
 };
+
+#endif

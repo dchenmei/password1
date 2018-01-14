@@ -2,6 +2,9 @@
  *
  *
  *************************************/
+
+#ifndef SCHNEIER_HPP
+#define SCHNEIER_HPP
 #include "password.hpp"
 
 class Schneier: public Password
@@ -15,3 +18,5 @@ class Schneier: public Password
 	string get_sentence();
 	vector<string> process_sentence(string s);
 };
+
+#endif

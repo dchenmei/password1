@@ -1,3 +1,5 @@
+#ifndef PAO_HPP
+#define PAO_HPP
 #include "password.hpp"
 
 class PAO: public Password
@@ -8,3 +10,5 @@ class PAO: public Password
   private:
 	string get_word();
 };
+
+#endif

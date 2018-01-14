@@ -3,6 +3,8 @@
  * Describes a random password
  *
  ***********************************/
+#ifndef RANDOM_HPP
+#define RANDOM_HPP
 #include "password.hpp"
 
 class Random: public Password
@@ -13,3 +15,5 @@ class Random: public Password
   private:
 	char rand_char();
 };
+
+#endif
