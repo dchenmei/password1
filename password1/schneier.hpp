@@ -1,7 +1,8 @@
 /***********************************************
  *
  * Describes a Schneier password, generated using
- * pieces of each word from a sentence
+ * pieces of each word from a sentence. Coined by
+ * cybersecurity professional Bruce Schneier.
  *
  * Author: swolewizard
  ***********************************************/
