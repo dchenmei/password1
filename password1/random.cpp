@@ -39,12 +39,12 @@ char Random::rand_char()
      */
 
 	/* Using sys time as seed, to pick a number from 0 to 68 */
-	srand(sleep(1));
-    int place = rand() % 69;
+	srand(time(NULL));
+    int place = rand() % (NUM_CHARS + 1);
 
     char c; 
 	/* Assorted symmbols: !, #, $ ... */
-    if (place < 69 && place >= 62)
+    if (place < (NUM_CHARS + 1) && place >= DELIM_ASSORT_SYMBOL)
     {   
         switch(place)
         {
@@ -72,17 +72,17 @@ char Random::rand_char()
         }
     }
 	/* A - Z */
-    else if (place >= 36)
+    else if (place >= DELIM_A_Z)
     {   
-        c = (char) place - 36 + 'A';
+        c = (char) place - DELIM_A_Z + 'A';
     }
 	/* a - z */
-    else if (place >= 10)
+    else if (place >= DELIM_a_z)
     {   
-        c = (char) place - 10 + 'a';
+        c = (char) place - DELIM_a_z + 'a';
     }
 	/* 0 - 9 */
-    else if (place < 10)
+    else if (place < DELIM_a_z)
     {   
         c = (char) place + '0';
     }

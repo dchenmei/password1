@@ -16,7 +16,12 @@
 #ifndef RANDOM_HPP
 #define RANDOM_HPP
 #include "password.hpp" /* parent class */
-#include <unistd.h> /* usleep */
+
+/* Delimiters and useful numbers */
+#define NUM_CHARS 68
+#define DELIM_ASSORT_SYMBOL 62
+#define DELIM_A_Z 36
+#define DELIM_a_z 10
 
 class Random: public Password
 {
