@@ -1,20 +1,50 @@
-/*****************************************
+/***********************************************
  *
- * Implementation for random password
+ * Implementation for Random password class
  *
- *****************************************/
+ * Author: swolewizard
+ *
+ ***********************************************/
 #include "random.hpp"
+
+Random::Random(int l)
+{
+    string p;
+    while (l--)
+    {
+        sleep(1);
+        p.push_back(rand_char());
+    }
+
+	/* why super class constructor no work? */
+	set_password(p);
+}
 
 /* A random seed will draw a number from [0, 74], then an algorithm figures out which char to get */
 /* random helper function */
 char Random::rand_char()
 {
-/* Random number [0, 74] */
-srand(time(NULL));
-    int place = rand() % 75;
-    char c; 
+	/* Algorithm breakdown: 
+     *   Limitation: 69 possible characters, non-sequential in ASCII
+     *	 
+     *	 To achieve an equal probability for each character, algorithm randomly draw
+     *   from 0 - 68. Then the result is pseudo-mapped (math) to corresponding char. 
+     *
+     * 	 Mapping (char, ascii -> 0 - 68):
+     *   0 - 9 (48 - 75) -> 0 - 9
+     *   a - z (97 - 122) -> 10 - 35
+     *   A - Z (65 - 90) -> 36 - 61
+     *   !, #, $, %, &, ?, @ -> 62 62 - 68
+     *
+     */
 
-    if (place < 74 && place >= 62)
+	/* Using sys time as seed, to pick a number from 0 to 68 */
+	srand(sleep(1));
+    int place = rand() % 69;
+
+    char c; 
+	/* Assorted symmbols: !, #, $ ... */
+    if (place < 69 && place >= 62)
     {   
         switch(place)
         {
@@ -41,14 +71,17 @@ srand(time(NULL));
                 break;
         }
     }
+	/* A - Z */
     else if (place >= 36)
     {   
         c = (char) place - 36 + 'A';
     }
+	/* a - z */
     else if (place >= 10)
     {   
         c = (char) place - 10 + 'a';
     }
+	/* 0 - 9 */
     else if (place < 10)
     {   
         c = (char) place + '0';
@@ -57,24 +90,3 @@ srand(time(NULL));
     return c;
 }
 
-/* Also known as psychopath method */
-Random::Random(int l)
-{
-	/* Char set used (ASCII):
- *      * 0 - 9 (48 - 57) 10      0 - 9
- *           * a - z (97 - 122) 26     10 - 35
- *                * A - Z (65 - 90) 26      36 - 61
- *                     * Assorted symbols (in an array)
- *                          * 33 (!), 35 (#), 36 ($), 37 (%), 38 (&), 63(?), 64(@) 7 62 - 68
- *                               */
-
-    string p;
-    while (l--)
-    {
-        sleep(1);
-        p.push_back(rand_char());
-    }
-
-	/* why super class constructor no work? */
-	set_password(p);
-}
