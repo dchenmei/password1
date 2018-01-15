@@ -1,3 +1,10 @@
+/***********************************************
+ * Schneier password implementation
+ *
+ * Author: swolewizard
+ *
+ ***********************************************/
+
 #include "schneier.hpp"
 
 Schneier::Schneier()
