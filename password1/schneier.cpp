@@ -2,8 +2,18 @@
 
 Schneier::Schneier()
 {
-    vector<string> pieces = process_sentence(get_sentence());
+	/* I/O: No need to read line, simply read by cin which gives each word */
+
+	vector<string> pieces;
+
+	cout << "Please enter a sentence, press ENTER then CTRL + D when done." << endl;
+	string w;
+	while (cin >> w)
+	{
+		pieces.push_back(w);
+	}
     
+	/* TODO: simplify this? */
     /* one or two words where the full word is used */
     srand(time(NULL));
     int full_words = (rand() % 2) + 1;
@@ -24,30 +34,4 @@ Schneier::Schneier()
     }   
 
 	set_password(temp);
-}
-
-string Schneier::get_sentence()
-{
-    string s;
-    getline(cin, s);
-    cout << s << endl;
-    
-    return s;
-}
-
-vector<string> Schneier::process_sentence(string s)
-{
-	/* Also ignore period if there is any */
-    /* to distinguish words, we use whitespaces as delimiter */
-
-    istringstream is(s);
-    vector<string> words;
-    string word;
-
-    while (is >> word) 
-    {   
-        words.push_back(word);
-    }   
-
-    return words;
 }
