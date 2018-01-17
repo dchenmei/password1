@@ -10,9 +10,10 @@
 Random::Random(int l)
 {
     string p;
+	srand(time(NULL));
     while (l--)
     {
-        sleep(1);
+        // sleep(1);
         p.push_back(rand_char());
     }
 
@@ -39,7 +40,6 @@ char Random::rand_char()
      */
 
 	/* Using sys time as seed, to pick a number from 0 to 68 */
-	srand(time(NULL));
     int place = rand() % (NUM_CHARS + 1);
 
     char c; 
