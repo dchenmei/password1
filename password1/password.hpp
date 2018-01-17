@@ -11,9 +11,6 @@
 #include <iostream>
 #include <string>
 #include <cstdlib> /* srand() */
-#include <ctime> /* time() */
-#include <unistd.h> /* sleep */
-#include <sstream> /* istringstream */
 #include <vector> /* vector */
 #include <algorithm> /* random_shuffle */
 
@@ -22,7 +19,6 @@ using std::cin;
 using std::endl;
 using std::string;
 using std::getline;
-using std::istringstream;
 using std::vector;
 using std::random_shuffle;
 
