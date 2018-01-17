@@ -1,4 +1,5 @@
 /***********************************************
+ *
  * Describes PAO password, came from some book
  * I read. It utilizes mnemonic techniques to 
  * create a strong password that can be easily 

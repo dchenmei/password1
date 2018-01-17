@@ -1,4 +1,5 @@
 /***********************************************
+ *
  * Schneier password implementation
  *
  * Author: swolewizard

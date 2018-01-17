@@ -22,11 +22,8 @@ using std::endl;
  *
  * ./password1 o l
  *
- * l: length of password 1 (8), 2 (16), 3 (32) -- only required for random
- * o: algorithm to choose from
- *
- * 4 password types: random, schneier, electrum, pao
- *
+ * o - password method: random(1), schneier(2), electrum(3), pao(4) 
+ * l - password length, only required for random method
  ************************************/
 
 void print_usage_insturction()
@@ -34,7 +31,8 @@ void print_usage_insturction()
 	cout << "Usage:" << endl;
 	cout << "./password1 o l" << endl;
 	cout << "o - password method: random(1), schneier(2), electrum(3), pao(4)" << endl;
-	cout << "l - optional length" << endl;
+	cout << "l - password length, only required for random method" << endl;
+	cout << "Note: Random method takes approx. 1s/char, recommend password length of 8 or 16" << endl;
 }
 	
 int main(int argc, char *argv[])
@@ -80,7 +78,6 @@ int main(int argc, char *argv[])
 	{
 		print_usage_insturction();
 	}
-
 
 	return 0;
 }
